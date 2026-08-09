@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Seller Dashboard - OwnShop</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<header class="header">
+    <a href="index.html" class="logo">Own<span>Shop</span></a>
+
+    <nav class="nav">
+        <a href="index.html">Home</a>
+        <a href="products.html">Products</a>
+        <a href="seller-dashboard.html">Dashboard</a>
+    </nav>
+</header>
+
+<main class="dashboard">
+
+    <section class="dashboard-header">
+        <div>
+            <p class="small-title">OWN SHOP SELLER</p>
+            <h1>Seller Dashboard</h1>
+            <p id="shopWelcome">Welcome to your seller dashboard.</p>
+        </div>
+
+        <button class="primary-btn" onclick="showAddProduct()">
+            + Add Product
+        </button>
+    </section>
+
+    <section class="dashboard-stats">
+
+        <div class="stat-card">
+            <span>Products</span>
+            <strong id="productCount">0</strong>
+        </div>
+
+        <div class="stat-card">
+            <span>Orders</span>
+            <strong>0</strong>
+        </div>
+
+        <div class="stat-card">
+            <span>Sales</span>
+            <strong>₹0</strong>
+        </div>
+
+    </section>
+
+    <section id="addProductSection" class="add-product-section">
+
+        <h2>Add New Product</h2>
+
+        <form id="productForm">
+
+            <label>Product Name</label>
+            <input type="text" id="productName" required>
+
+            <label>Product Price (₹)</label>
+            <input type="number" id="productPrice" min="1" required>
+
+            <label>Category</label>
+            <select id="productCategory" required>
+                <option value="">Select Category</option>
+                <option value="fashion">Fashion</option>
+                <option value="electronics">Electronics</option>
+                <option value="home">Home & Furniture</option>
+                <option value="beauty">Beauty</option>
+                <option value="food">Food</option>
+                <option value="grocery">Grocery</option>
+                <option value="other">Other</option>
+            </select>
+
+            <label>Product Description</label>
+            <textarea id="productDescription" rows="4" required></textarea>
+
+            <label>Product Image URL</label>
+            <input type="url" id="productImage" placeholder="https://example.com/image.jpg" required>
+
+            <button type="submit" class="primary-btn">
+                Add Product
+            </button>
+
+        </form>
+
+    </section>
+
+    <section class="seller-products">
+
+        <div class="section-header">
+            <h2>My Products</h2>
+        </div>
+
+        <div id="myProducts" class="product-grid">
+        </div>
+
+        <p id="noSellerProducts">
+            You have not added any products yet.
+        </p>
+
+    </section>
+
+</main>
+
+<script src="seller-dashboard.js"></script>
+
+</body>
+</html>
