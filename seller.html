@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Become a Seller - OwnShop</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header class="header">
+    <a href="index.html" class="logo">Own<span>Shop</span></a>
+    <nav class="nav">
+        <a href="index.html">Home</a>
+        <a href="products.html">Products</a>
+        <a href="seller.html">Sell on OwnShop</a>
+    </nav>
+</header>
+
+<main class="seller-page">
+    <div class="seller-form-box">
+        <h1>Become a Seller</h1>
+        <p>Register your shop and start selling on OwnShop.</p>
+
+        <form id="sellerForm">
+
+            <label>Owner Name</label>
+            <input type="text" id="ownerName" required>
+
+            <label>Mobile Number</label>
+            <input type="tel" id="mobile" maxlength="10" required>
+
+            <label>Shop Name</label>
+            <input type="text" id="shopName" required>
+
+            <label>Business Category</label>
+            <select id="category" required>
+                <option value="">Select Category</option>
+                <option value="fashion">Fashion</option>
+                <option value="electronics">Electronics</option>
+                <option value="home">Home & Furniture</option>
+                <option value="beauty">Beauty</option>
+                <option value="food">Food / Sweet Shop / Bakery</option>
+                <option value="grocery">Grocery</option>
+                <option value="other">Other</option>
+            </select>
+
+            <label>Shop Address</label>
+            <textarea id="address" rows="4" required></textarea>
+
+            <label>GST Status</label>
+            <select id="gstStatus" required>
+                <option value="">Select GST Status</option>
+                <option value="registered">GST Registered</option>
+                <option value="not_registered">Not GST Registered</option>
+            </select>
+
+            <div id="gstBox" class="conditional-box">
+                <label>GSTIN</label>
+                <input type="text" id="gstin">
+            </div>
+
+            <div id="fssaiBox" class="conditional-box">
+                <label>FSSAI Number</label>
+                <input type="text" id="fssai">
+            </div>
+
+            <button type="submit" class="primary-btn">
+                Register as Seller
+            </button>
+
+        </form>
+
+        <div id="sellerMessage"></div>
+    </div>
+</main>
+
+<script src="seller.js"></script>
+</body>
+</html>
