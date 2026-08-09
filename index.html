@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>OwnShop - Online Marketplace</title>
+    <meta name="description" content="OwnShop - Shop from trusted sellers.">
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <!-- HEADER -->
+    <header class="header">
+
+        <a href="index.html" class="logo">
+            Own<span>Shop</span>
+        </a>
+
+        <div class="search-box">
+            <input type="text" id="searchInput" placeholder="Search products...">
+
+            <button onclick="searchProducts()">
+                Search
+            </button>
+        </div>
+
+        <nav class="nav">
+            <a href="index.html">Home</a>
+            <a href="products.html">Products</a>
+            <a href="cart.html">
+                Cart (<span id="cartCount">0</span>)
+            </a>
+            <a href="login.html">Login</a>
+        </nav>
+
+    </header>
+
+
+    <!-- HERO SECTION -->
+    <section class="hero">
+
+        <div class="hero-content">
+
+            <p class="small-title">
+                WELCOME TO OWNSHOP
+            </p>
+
+            <h1>
+                Everything You Need,
+                <span>In One Shop.</span>
+            </h1>
+
+            <p>
+                Discover products from trusted sellers
+                and shop easily on OwnShop.
+            </p>
+
+            <div class="hero-buttons">
+
+                <a href="products.html" class="primary-btn">
+                    Shop Now
+                </a>
+
+                <a href="seller-signup.html" class="secondary-btn">
+                    Sell on OwnShop
+                </a>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- CATEGORIES -->
+    <section class="categories">
+
+        <div class="section-header">
+            <h2>Shop by Category</h2>
+        </div>
+
+        <div class="category-grid">
+
+            <a href="products.html?category=fashion" class="category-card">
+
+                <div class="category-icon">👕</div>
+                <h3>Fashion</h3>
+
+            </a>
+
+
+            <a href="products.html?category=electronics" class="category-card">
+
+                <div class="category-icon">📱</div>
+                <h3>Electronics</h3>
+
+            </a>
+
+
+            <a href="products.html?category=home" class="category-card">
+
+                <div class="category-icon">🏠</div>
+                <h3>Home & Furniture</h3>
+
+            </a>
+
+
+            <a href="products.html?category=beauty" class="category-card">
+
+                <div class="category-icon">✨</div>
+                <h3>Beauty</h3>
+
+            </a>
+
+
+            <a href="products.html?category=food" class="category-card">
+
+                <div class="category-icon">🍰</div>
+                <h3>Food</h3>
+
+            </a>
+
+
+            <a href="products.html?category=grocery" class="category-card">
+
+                <div class="category-icon">🛒</div>
+                <h3>Grocery</h3>
+
+            </a>
+
+        </div>
+
+    </section>
+
+
+    <!-- FEATURED PRODUCTS -->
+    <section class="featured">
+
+        <div class="section-header">
+
+            <h2>Featured Products</h2>
+
+            <a href="products.html">
+                View All →
+            </a>
+
+        </div>
+
+        <div id="featuredProducts" class="product-grid">
+            <!-- Products will be loaded by app.js -->
+        </div>
+
+    </section>
+
+
+    <!-- SELLER SECTION -->
+    <section class="seller-banner">
+
+        <div>
+
+            <p class="small-title">
+                FOR BUSINESS OWNERS
+            </p>
+
+            <h2>
+                Start Selling on OwnShop
+            </h2>
+
+            <p>
+                Register your shop and reach customers
+                through OwnShop.
+            </p>
+
+        </div>
+
+        <a href="seller-signup.html" class="primary-btn">
+            Become a Seller
+        </a>
+
+    </section>
+
+
+    <!-- FOOTER -->
+    <footer class="footer">
+
+        <div class="footer-logo">
+            Own<span>Shop</span>
+        </div>
+
+        <div class="footer-links">
+
+            <a href="#">About</a>
+            <a href="#">Contact</a>
+            <a href="#">Privacy Policy</a>
+            <a href="#">Terms & Conditions</a>
+
+        </div>
+
+        <p>
+            © 2026 OwnShop. All rights reserved.
+        </p>
+
+    </footer>
+
+
+    <script src="app.js"></script>
+
+</body>
+
+</html>
