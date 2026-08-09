@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Products - OwnShop</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <header class="header">
+
+        <a href="index.html" class="logo">
+            Own<span>Shop</span>
+        </a>
+
+        <nav class="nav">
+            <a href="index.html">Home</a>
+            <a href="products.html">Products</a>
+            <a href="cart.html">Cart</a>
+            <a href="login.html">Login</a>
+        </nav>
+
+    </header>
+
+
+    <main>
+
+        <section class="products-page">
+
+            <div class="products-header">
+                <h1>All Products</h1>
+                <p>Discover products from trusted OwnShop sellers.</p>
+            </div>
+
+
+            <!-- SEARCH -->
+
+            <div class="product-search">
+
+                <input type="text" id="productSearch" placeholder="Search products...">
+
+                <button onclick="filterProducts()">
+                    Search
+                </button>
+
+            </div>
+
+
+            <!-- CATEGORY FILTERS -->
+
+            <div class="filters">
+
+                <button class="filter-button active" onclick="filterCategory('all')">
+                    All
+                </button>
+
+                <button class="filter-button" onclick="filterCategory('fashion')">
+                    Fashion
+                </button>
+
+                <button class="filter-button" onclick="filterCategory('electronics')">
+                    Electronics
+                </button>
+
+                <button class="filter-button" onclick="filterCategory('home')">
+                    Home
+                </button>
+
+                <button class="filter-button" onclick="filterCategory('beauty')">
+                    Beauty
+                </button>
+
+                <button class="filter-button" onclick="filterCategory('food')">
+                    Food
+                </button>
+
+                <button class="filter-button" onclick="filterCategory('grocery')">
+                    Grocery
+                </button>
+
+            </div>
+
+
+            <!-- PRODUCT LIST -->
+
+            <div id="productsContainer" class="product-grid">
+            </div>
+
+
+            <!-- NO PRODUCTS -->
+
+            <div id="noProducts" style="display: none; text-align: center; padding: 50px;">
+
+                <h2>No products found</h2>
+
+                <p>
+                    Try another search or category.
+                </p>
+
+            </div>
+
+        </section>
+
+    </main>
+
+
+    <footer class="footer">
+
+        <div class="footer-logo">
+            Own<span>Shop</span>
+        </div>
+
+        <p>
+            © 2026 OwnShop. All rights reserved.
+        </p>
+
+    </footer>
+
+
+    <script src="app.js"></script>
+
+</body>
+
+</html>
