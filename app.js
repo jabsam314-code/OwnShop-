@@ -128,8 +128,6 @@ function updateCartCount() {
         cartCount.textContent = count;
     }
 }
-
-
 // Initialize homepage
 document.addEventListener(
     "DOMContentLoaded",
@@ -138,6 +136,166 @@ document.addEventListener(
         loadFeaturedProducts();
 
         updateCartCount();
+
+    }
+);
+// ========================================
+// PRODUCTS PAGE
+// ========================================
+
+let selectedCategory = "all";
+
+function loadProductsPage() {
+
+    const container =
+        document.getElementById("productsContainer");
+
+    if (!container) {
+        return;
+    }
+
+    const params =
+        new URLSearchParams(window.location.search);
+
+    const category =
+        params.get("category");
+
+    const search =
+        params.get("search");
+
+    if (category) {
+        selectedCategory = category;
+    }
+
+    const searchInput =
+        document.getElementById("productSearch");
+
+    if (search && searchInput) {
+        searchInput.value = search;
+    }
+
+    filterProducts();
+}
+
+
+// ========================================
+// FILTER PRODUCTS
+// ========================================
+
+function filterProducts() {
+
+    const container =
+        document.getElementById("productsContainer");
+
+    if (!container) {
+        return;
+    }
+
+    const searchInput =
+        document.getElementById("productSearch");
+
+    const searchText =
+        searchInput
+            ? searchInput.value.trim().toLowerCase()
+            : "";
+
+    const filtered =
+        products.filter(product => {
+
+            const categoryMatch =
+                selectedCategory === "all" ||
+                product.category === selectedCategory;
+
+            const searchMatch =
+                searchText === "" ||
+                product.name
+                    .toLowerCase()
+                    .includes(searchText);
+
+            return categoryMatch && searchMatch;
+        });
+
+    container.innerHTML = "";
+
+    const noProducts =
+        document.getElementById("noProducts");
+
+    if (filtered.length === 0) {
+
+        if (noProducts) {
+            noProducts.style.display = "block";
+        }
+
+        return;
+
+    }
+
+    if (noProducts) {
+        noProducts.style.display = "none";
+    }
+
+    filtered.forEach(product => {
+
+        const card =
+            document.createElement("div");
+
+        card.className = "product-card";
+
+        card.innerHTML = `
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            <a href="product.html?id=${product.id}">
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            <img
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                src="${product.image}"
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    alt="${product.name}"
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    >
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                </a>
+
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            <div class="product-info">
+
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            <h3>${product.name}</h3>
+
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            <div class="product-price">
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                ₹${product.price.toLocaleString("en-IN")}
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                </div>
+
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                <p>
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    Sold by ${product.seller}
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    </p>
+
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                </div>
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        `;
+
+        container.appendChild(card);
+    });
+}
+
+
+// ========================================
+// CATEGORY FILTER
+// ========================================
+
+function filterCategory(category) {
+
+    selectedCategory = category;
+
+    document
+        .querySelectorAll(".filter-button")
+        .forEach(button => {
+            button.classList.remove("active");
+        });
+
+    filterProducts();
+}
+
+
+// ========================================
+// INITIALIZE PRODUCTS PAGE
+// ========================================
+
+document.addEventListener(
+    "DOMContentLoaded",
+    function () {
+
+        loadProductsPage();
 
     }
 );
