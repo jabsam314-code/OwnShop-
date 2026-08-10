@@ -19,8 +19,10 @@ document.addEventListener("DOMContentLoaded", function () {
         shopWelcome.textContent = "Welcome to " + seller.shopName;
     }
 
+    const LOCAL_STORAGE_KEY = "OwnShopProducts";
+
     // Get saved products
-    let products = JSON.parse(localStorage.getItem("ownShopProducts") || "[]");
+    let products = JSON.parse(localStorage.getItem(LOCAL_STORAGE_KEY) || "[]");
 
     function displayProducts() {
 
@@ -92,7 +94,7 @@ document.addEventListener("DOMContentLoaded", function () {
                     products.splice(index, 1);
 
                     localStorage.setItem(
-                        "ownShopProducts",
+                        LOCAL_STORAGE_KEY,
                         JSON.stringify(products)
                     );
 
@@ -127,7 +129,7 @@ document.addEventListener("DOMContentLoaded", function () {
             products.push(newProduct);
 
             localStorage.setItem(
-                "ownShopProducts",
+                LOCAL_STORAGE_KEY,
                 JSON.stringify(products)
             );
 

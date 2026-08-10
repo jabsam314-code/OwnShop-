@@ -1,12 +1,13 @@
 // OwnShop - Homepage JavaScript
 
-const products = [
+const defaultProducts = [
     {
         id: 1,
         name: "Premium Cotton T-Shirt",
         price: 499,
         category: "fashion",
         seller: "OwnShop Seller",
+        description: "A soft, everyday t-shirt made of premium cotton.",
         image: "https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?auto=format&fit=crop&w=600&q=80"
     },
     {
@@ -15,6 +16,7 @@ const products = [
         price: 1299,
         category: "electronics",
         seller: "Tech Store",
+        description: "Comfortable wireless headphones with immersive sound.",
         image: "https://images.unsplash.com/photo-1505740420928-5e560c06d30e?auto=format&fit=crop&w=600&q=80"
     },
     {
@@ -23,6 +25,7 @@ const products = [
         price: 899,
         category: "fashion",
         seller: "Urban Store",
+        description: "A modern backpack with multiple compartments for daily use.",
         image: "https://images.unsplash.com/photo-1553062407-98eeb64c6a62?auto=format&fit=crop&w=600&q=80"
     },
     {
@@ -31,12 +34,13 @@ const products = [
         price: 1999,
         category: "electronics",
         seller: "Digital World",
+        description: "A smart watch with fitness tracking and notifications.",
         image: "https://images.unsplash.com/photo-1523275335684-37898b6baf30?auto=format&fit=crop&w=600&q=80"
     }
 ];
 
+let products = [...defaultProducts];
 
-// Load featured products
 function loadFeaturedProducts() {
 
     const container = document.getElementById("featuredProducts");
@@ -139,6 +143,43 @@ document.addEventListener(
 
     }
 );
+
+function loadStoredSellerProducts() {
+    try {
+        const stored = JSON.parse(
+            localStorage.getItem("OwnShopProducts") || "[]"
+        );
+
+        return Array.isArray(stored) ? stored : [];
+    } catch (error) {
+        return [];
+    }
+}
+
+function mergeProducts(defaultProductsArray, sellerProductsArray) {
+    const merged = [...defaultProductsArray];
+    const existingIds = new Set(defaultProductsArray.map(p => String(p.id)));
+
+    sellerProductsArray.forEach(product => {
+        if (!product || product.id === undefined || product.id === null) {
+            return;
+        }
+
+        const productId = String(product.id);
+
+        if (!existingIds.has(productId)) {
+            merged.push(product);
+            existingIds.add(productId);
+        }
+    });
+
+    return merged;
+}
+
+function getAllProducts() {
+    return mergeProducts(defaultProducts, loadStoredSellerProducts());
+}
+
 // ========================================
 // PRODUCTS PAGE
 // ========================================
@@ -153,6 +194,8 @@ function loadProductsPage() {
     if (!container) {
         return;
     }
+
+    products = getAllProducts();
 
     const params =
         new URLSearchParams(window.location.search);
@@ -199,8 +242,10 @@ function filterProducts() {
             ? searchInput.value.trim().toLowerCase()
             : "";
 
+    const allProducts = getAllProducts();
+
     const filtered =
-        products.filter(product => {
+        allProducts.filter(product => {
 
             const categoryMatch =
                 selectedCategory === "all" ||
